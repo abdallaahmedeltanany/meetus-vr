@@ -1,15 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+import { ABeeZee } from "next/font/google";
+import Image from "next/image";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+const abeezee = ABeeZee({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["400"],
+  style: ["normal", "italic"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -25,9 +23,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${abeezee.className} antialiased `}
+        style={{
+          backgroundColor: "#E9ECF2",
+          margin: 0,
+          padding: 0,
+          overflowY: "hidden",
+        }}
       >
         {children}
+        <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
       </body>
     </html>
   );
